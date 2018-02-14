@@ -64,14 +64,14 @@ function draw() {
   if (playing) {
 		if (playingC) {
     	fill(52, 123, 229);
-    	ellipse(300, 300, 80, 80);
+    	ellipse(350, 350, 80, 80);
     	fill('white');
-    	text('C',300, 300);
+    	text('C',345, 355);
   } else if (playingG) {
     	fill(34,233,100);
     	ellipse(250, 150, 80, 80);
     	fill('white');
-    	text('G', 250, 150);
+    	text('G', 245, 155);
   } else if (playingA) {
     	fill('red');
   		ellipse(50,50, 25,25); 
@@ -81,17 +81,17 @@ function draw() {
     fill('green');
     ellipse(200, 250, 80, 80);
     fill('white');
-    text('F', 200, 250);
+    text('F', 195, 255);
   } else if (playingE) {
     fill(52, 123, 229);
-    ellipse(180, 200, 80, 80);
+    ellipse(220, 270, 80, 80);
     fill('white');
-    text('E', 180, 200);
+    text('E', 215, 275);
   } else if (playingD) {
     fill(52, 123, 229);
-    ellipse(250, 250, 80, 80);
+    ellipse(250, 300, 80, 80);
     fill('white');
-    text('D', 250, 250);
+    text('D', 245, 305);
   }
   }
   else {
