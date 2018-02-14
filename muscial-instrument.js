@@ -1,5 +1,3 @@
-//The goal of this interactive instrument is to teach you the notes to a classic childhood song
-
 var freqC = 261;
 var freqG = 392;
 var freqA = 440;
@@ -65,32 +63,32 @@ function draw() {
   fill(220);
   if (playing) {
 		if (playingC) {
-    	fill(52, 123, 229);
+    	fill(82, 72, 156);
     	ellipse(350, 350, 80, 80);
     	fill('white');
     	text('C',345, 355);
   } else if (playingG) {
-    	fill(34,233,100);
+    	fill(12, 124, 89);
     	ellipse(250, 150, 80, 80);
     	fill('white');
     	text('G', 245, 155);
   } else if (playingA) {
-    	fill('red');
+    	fill(239, 202, 8);
   		ellipse(50,50, 25,25); 
     	fill('white');
     	text('A',47,53);
   } else if (playingF) {
-    fill('green');
+    fill(86, 136, 199);
     ellipse(200, 250, 80, 80);
     fill('white');
     text('F', 195, 255);
   } else if (playingE) {
-    fill(52, 123, 229);
+    fill(33, 118, 174);
     ellipse(220, 270, 80, 80);
     fill('white');
     text('E', 215, 275);
   } else if (playingD) {
-    fill(52, 123, 229);
+    fill(116, 79, 198);
     ellipse(250, 300, 80, 80);
     fill('white');
     text('D', 245, 305);
