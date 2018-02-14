@@ -1,3 +1,5 @@
+//The goal of this interactive instrument is to teach you the notes to a classic childhood song
+
 var freqC = 261;
 var freqG = 392;
 var freqA = 440;
