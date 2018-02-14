@@ -61,43 +61,44 @@ function setup() {
 function draw() {
   noStroke();
   fill(220);
-	if (playingC) {
-    fill(34,233,100);
-    ellipse(50,50, 25,25); 
-    fill('white');
-    text('C',47,53);
-  }
-  if (playingG) {
-    fill(52, 123, 229);
-    ellipse(80, 100, 80, 80);
-    fill('white');
-    text('G', 80, 100);
-    
-  }
-  if (playingA) {
-    fill('red');
-    ellipse(250, 150, 80, 80);
-    fill('white');
-    text('A', 250, 150);
-  }
-  if (playingF) {
+  if (playing) {
+		if (playingC) {
+    	fill(52, 123, 229);
+    	ellipse(300, 300, 80, 80);
+    	fill('white');
+    	text('C',300, 300);
+  } else if (playingG) {
+    	fill(34,233,100);
+    	ellipse(250, 150, 80, 80);
+    	fill('white');
+    	text('G', 250, 150);
+  } else if (playingA) {
+    	fill('red');
+  		ellipse(50,50, 25,25); 
+    	fill('white');
+    	text('A',47,53);
+  } else if (playingF) {
     fill('green');
-    ellipse(180, 100, 80, 80);
+    ellipse(200, 250, 80, 80);
     fill('white');
-    text('F', 180, 100);
-  }
-  if (playingE) {
+    text('F', 200, 250);
+  } else if (playingE) {
     fill(52, 123, 229);
     ellipse(180, 200, 80, 80);
     fill('white');
     text('E', 180, 200);
-  }
-  if (playingD) {
+  } else if (playingD) {
     fill(52, 123, 229);
     ellipse(250, 250, 80, 80);
     fill('white');
     text('D', 250, 250);
   }
+  }
+  else {
+    fill (19,30,85);
+    rect(0,25,300,400);
+    rect(0,200,400,200);
+	}
 }
 
 function keyPressed() {
