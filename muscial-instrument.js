@@ -54,8 +54,8 @@ function setup() {
   rect(320,0,80,80);
   fill('white');
   text('CLICK', 340,30);
-  text('FOR', 340, 45);
-  text('NOTES',340,60);
+  text('TO', 340, 45);
+  text('START',340,60);
 }
 
 function draw() {
