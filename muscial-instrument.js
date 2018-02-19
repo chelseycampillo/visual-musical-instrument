@@ -10,9 +10,16 @@ var oscC, oscG, oscA, oscF, oscE, oscD;
 
 var playing = false;
 
+// Where is the text
+var x, y;
+
 function setup() {
   createCanvas (400,400);
-  background(19,30,85);
+  background(183, 211, 242);
+	
+	// Starts in the middle
+  x = width
+  y = height/2;
   
   oscC = new p5.Oscillator();
   oscC.setType('triangle');
@@ -94,11 +101,6 @@ function draw() {
     text('D', 245, 305);
   }
   }
-  else {
-    fill (19,30,85);
-    rect(0,25,300,400);
-    rect(0,200,400,200);
-	}
 }
 
 function keyPressed() {
@@ -158,7 +160,16 @@ function keyReleased() {
 }
 
 function mouseClicked() {
-	fill('white');
-  text('ccggaag ffeeddc ggffeed ggffeed ccggaag ffeeddc', 10,20);
+	// Notes to preferred song
+  fill(100);
+	textSize(32);
+  text('ccggaag ffeeddc ggffeed ggffeed ccggaag ffeeddc',x, y);
+  
+  // Moving left at a constant speed
+  x = x - 1;
+  
+  // Reset to the right side of the canvas
+  if (x < -800) {
+    x = width;
+  }
 }
-
