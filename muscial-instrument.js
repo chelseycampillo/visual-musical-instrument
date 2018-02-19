@@ -15,7 +15,6 @@ var x, y;
 
 function setup() {
   createCanvas (400,400);
-  background(183, 211, 242);
 	
 	// Starts in the middle
   x = width
@@ -56,18 +55,21 @@ function setup() {
   oscD.freq(freqD);
   oscD.amp(0);
   oscD.start();
-  
-  fill('pink');
-  rect(320,0,80,80);
-  fill('white');
-  text('CLICK', 340,30);
-  text('TO', 340, 45);
-  text('START',340,60);
 }
 
 function draw() {
-  noStroke();
-  fill(220);
+	background(183, 211, 242);
+	
+	//click to start button
+	noStroke();
+	fill('pink');
+  rect(320,0,80,80);
+  fill('white');
+  text('Twinkle', 340,30);
+  text('Twinkle', 340, 45);
+  text('Little Star',340,60);
+  
+
   if (playing) {
 		if (playingC) {
     	fill(82, 72, 156);
