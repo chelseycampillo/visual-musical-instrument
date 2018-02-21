@@ -3,16 +3,33 @@ var amp;
 var start = 0;
 var w;
 var playing = 0;
+var mode = 1;
+var r = 0;
+var circles = [];
+var x = [];
+var y = [];
+var xSpeed = [];
+var ySpeed = [];
+var colors = [];
+
 
 function preload() {
-  song = loadSound('songs/2.mp3');
+  song = loadSound('songs/3.mp3');
 }
 
 function setup() { 
-  createCanvas(256, 256);
+  createCanvas(512, 512);
 	colorMode(HSB);
 	fft = new p5.FFT(0.9, 64);
   w = width / 64;
+  
+  for (var index = 0; index < 100; index = index + 1) {
+    x[index] = width / 2;
+    y[index] = height / 2;
+    xSpeed[index] = random(-5, 5);
+    ySpeed[index] = random(-5, 5);
+    colors[index] = color(random(255), random(255), random(255))
+  }
 } 
 
 function draw() { 
@@ -24,13 +41,54 @@ function draw() {
     song.pause();
     playing = 0;
   }
+  
   var spectrum = fft.analyze();
+  var timespectrum = fft.waveform();
+  
   stroke(255);
+  
   for (var i = 0; i < spectrum.length; i = i + 1) {
     var amp = spectrum[i];
-    var y = map(amp, 0, 256, height, 0);
-    fill(i, 255, 255);
-    rect(i * w, y, w, height - y);
+    var h = map(amp, 0, 512, height, 0);
+    fill(amp, 255, 2*amp);
+	
+    if (mode == 1) {
+      rect(i * w, h-200, w, h-200);
+    } else if (mode == 2) {
+      ellipseMode(RADIUS);
+      ellipse(width/2, height/2, amp);
+    } else if (mode == 3) {
+      ellipse(width/2, height/2, amp);
+     	push();
+  		// rotate r around (x,y)
+  		translate(width/2, height/2);
+  		rotate(r);
+  		// draw rectangle
+  		rect(90, 90, 90, 90);
+  		// reset rotation and translation
+  		pop();
+      r += 1.5;
+    } else if (mode == 4) {
+      ellipseMode(CENTER);
+      ellipse(x[i], y[i], amp/2);
+   	 	x[i] = x[i] + xSpeed[i];
+    	y[i] = y[i] + ySpeed[i];
+    	if (x[i] > width - 5) {
+      	xSpeed[i] = -xSpeed[i];
+    	}
+
+    	if (y[i] > height - 5) {
+      	ySpeed[i] = -ySpeed[i];
+    	}
+
+    	if (x[i] < 5) {
+      	xSpeed[i] = -xSpeed[i];
+    	}
+
+    	if (y[i] < 5) {
+      	ySpeed[i] = -ySpeed[i];
+    	}
+    } 
   }
 }
 
@@ -41,3 +99,17 @@ function mouseClicked() {
     start = 0;
   }
 }
+
+function keyPressed() {
+  print("got key press for ", key);
+  if (key == 'A') {
+    mode = 1;
+  } else if (key == 'S') {
+    mode = 2;
+  } else if (key == 'D') {
+    mode = 3;
+  } else if (key == 'F') {
+    mode = 4;
+  }
+}
+
