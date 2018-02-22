@@ -22,6 +22,7 @@ function preload() {
 function setup() { 
   createCanvas(512, 512);
 	colorMode(HSB);
+  angleMode(DEGREES);
 	fft = new p5.FFT(0.9, 64);
   w = width / 64;
   
@@ -55,7 +56,7 @@ function draw() {
     fill(amp, 255, 2*amp);
 	
     if (mode == 1) {
-      rect(i * w, h-200, w, h-200);
+      rect(i * w, h-200, i*w, h-200);
     } else if (mode == 2) {
       ellipseMode(RADIUS);
       ellipse(width/2, height/2, amp);
@@ -77,7 +78,7 @@ function draw() {
     	y[i] = y[i] + ySpeed[i];
     	if (x[i] > width - 5) {
       	xSpeed[i] = -xSpeed[i];
-    	}
+    	}     
 
     	if (y[i] > height - 5) {
       	ySpeed[i] = -ySpeed[i];
