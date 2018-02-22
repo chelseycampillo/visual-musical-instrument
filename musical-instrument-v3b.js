@@ -1,5 +1,5 @@
-var kanye; //flashing lights
-var kendrick;  //all the stars
+var song1;
+var song2;
 var amp;
 var start = 0;
 var w;
@@ -15,13 +15,11 @@ var colors = [];
 
 
 function preload() {
-  kanye = loadSound('09 Flashing Lights shortened 1.m4a');
-  kendrick = loadSound('02 All The Stars 1.m4a');
+  song1 = loadSound('09 Flashing Lights shortened 1.mp3');
+  song2 = loadSound('02 All The Stars 1.mp3');
 }
 
 function setup() { 
-  kanye.setVolume(0.5);
-  kendrick.setVolume(0.5);
   createCanvas(512, 512);
 	colorMode(HSB);
 	fft = new p5.FFT(0.9, 64);
@@ -39,17 +37,17 @@ function setup() {
 function draw() { 
 	background(0);
   if (start == 1 & playing == 0) {
-    kanye.play();
+    song2.play();
     playing = 1;
   } else if (start == 0 & playing == 1) {
-    kanye.pause();
+    song2.pause();
+    song1.play();
     playing = 0;
   }
   
   var spectrum = fft.analyze();
-  var timespectrum = fft.waveform();
   
-  stroke(255);
+  noStroke();
   
   for (var i = 0; i < spectrum.length; i = i + 1) {
     var amp = spectrum[i];
@@ -116,3 +114,4 @@ function keyPressed() {
     mode = 4;
   }
 }
+
