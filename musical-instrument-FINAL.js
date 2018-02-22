@@ -33,9 +33,10 @@ function preload() {
 }
 
 function setup() { 
-  createCanvas(512, 512);
+  var cnv = createCanvas(512, 512);
 	colorMode(HSB);
   angleMode(DEGREES);
+  cnv.mouseClicked(togglePlay);
 	fft = new p5.FFT(0.9, 64);
   w = width / 64;
   
@@ -50,14 +51,15 @@ function setup() {
 
 function draw() { 
 	background(0);
+  
   if (start == 1 & playing == 0) {
     song2.play();
     playing = 1;
-  } else if (start == 0 & playing == 1) {
-    song2.pause();
-    song1.play();
-    playing = 0;
-  }
+  } //else if (start == 0 & playing == 1) {
+    //song2.pause();
+    //song1.play();
+    //playing = 0;
+  //}
   
   var spectrum = fft.analyze();
   
@@ -136,5 +138,15 @@ function keyPressed() {
     myHiHat.play(); 
   } else if (key == '5') {
     myKick.play(); 
+  }
+}
+
+function togglePlay() {
+  if (song2.isPlaying()) {
+    song2.pause();
+    song1.play();
+  }else if (song1.isPlaying()) {
+    song1.pause();
+    song2.play();
   }
 }
