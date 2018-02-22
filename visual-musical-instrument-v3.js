@@ -45,7 +45,7 @@ function draw() {
   var spectrum = fft.analyze();
   var timespectrum = fft.waveform();
   
-  stroke(255);
+  noStroke();
   
   for (var i = 0; i < spectrum.length; i = i + 1) {
     var amp = spectrum[i];
