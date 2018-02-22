@@ -4,8 +4,8 @@ var myCrash;
 var myHiHatO;
 var myHiHat;
 var myKick;
-var song1;
-var song2;
+var song1;//flashing lights
+var song2;//all the stars
 var amp;
 var start = 0;
 var w;
