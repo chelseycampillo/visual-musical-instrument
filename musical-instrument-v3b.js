@@ -1,5 +1,5 @@
-var flashingLights; //first song choice
-var allTheStars; //second song choice
+var kanye; //flashing lights
+var kendrick;  //all the stars
 var amp;
 var start = 0;
 var w;
@@ -15,13 +15,15 @@ var colors = [];
 
 
 function preload() {
-  flashingLights = loadSound('09 Flashing Lights shortened 1.m4a');
-  allTheStars = loadSound('02 All The Stars 1.m4a');
+  kanye = loadSound('09 Flashing Lights shortened 1.m4a');
+  kendrick = loadSound('02 All The Stars 1.m4a');
 }
 
 function setup() { 
+  kanye.setVolume(0.5);
+  kendrick.setVolume(0.5);
   createCanvas(512, 512);
-  colorMode(HSB);
+	colorMode(HSB);
 	fft = new p5.FFT(0.9, 64);
   w = width / 64;
   
@@ -30,23 +32,24 @@ function setup() {
     y[index] = height / 2;
     xSpeed[index] = random(-5, 5);
     ySpeed[index] = random(-5, 5);
-    colors[index] = color(random(0,60), random(100,255), random(100,255)); //red
+    colors[index] = color(random(255), random(255), random(255))
   }
 } 
 
 function draw() { 
 	background(0);
   if (start == 1 & playing == 0) {
-    song.play();
+    kanye.play();
     playing = 1;
   } else if (start == 0 & playing == 1) {
-    song.pause();
+    kanye.pause();
     playing = 0;
   }
   
   var spectrum = fft.analyze();
+  var timespectrum = fft.waveform();
   
-  noStroke();
+  stroke(255);
   
   for (var i = 0; i < spectrum.length; i = i + 1) {
     var amp = spectrum[i];
@@ -70,10 +73,10 @@ function draw() {
   		pop();
       r += 1.5;
     } else if (mode == 4) {
-      	ellipseMode(CENTER);
-      	ellipse(x[i], y[i], amp/2);
-   	 		x[i] = x[i] + xSpeed[i];
-    		y[i] = y[i] + ySpeed[i];
+      ellipseMode(CENTER);
+      ellipse(x[i], y[i], amp/2);
+   	 	x[i] = x[i] + xSpeed[i];
+    	y[i] = y[i] + ySpeed[i];
     	if (x[i] > width - 5) {
       	xSpeed[i] = -xSpeed[i];
     	}
@@ -113,4 +116,3 @@ function keyPressed() {
     mode = 4;
   }
 }
-
