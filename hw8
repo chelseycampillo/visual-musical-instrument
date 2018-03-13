@@ -1,0 +1,37 @@
+
+
+#include <Servo.h>
+
+Servo frontLeft;  // create servo object to control a servo
+Servo frontRight;
+Servo backLeft;
+Servo backRight;
+
+
+int pos = 0;  // analog pin used to connect the potentiometer
+
+void setup() {
+  frontLeft.attach(5);  // attaches the servo on pin to the servo object
+  frontRight.attach(6);
+  backLeft.attach(9);
+  backRight.attach(10);
+}
+
+void loop() {
+  for (pos = 45; pos <= 135; pos += 1) { // goes from 45 degrees to 135 degrees
+    // in steps of 1 degree
+    frontLeft.write(pos);              // tell servo to go to position in variable 'pos'
+    backRight.write(pos);
+    frontRight.write(pos);
+    backLeft.write(pos);
+    delay(15);                       // waits 15ms for the servo to reach the position
+  }
+  for (pos = 45; pos <= 135; pos += 1) { // goes from 45 degrees to 135 degrees
+    // in steps of 1 degree
+    frontLeft.write(180 - pos);              // tell servo to go to position in variable 'pos'
+    backRight.write(180 - pos);
+    frontRight.write(180 - pos);
+    backLeft.write(180 - pos);
+    delay(15);                       // waits 15ms for the servo to reach the position
+  }
+}
